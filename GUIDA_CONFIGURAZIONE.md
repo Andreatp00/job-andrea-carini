@@ -143,14 +143,13 @@ Se non hai un account GitHub: https://github.com/signup → registrati (gratis)
 Poi:
 1. Vai su https://github.com/new
 2. Crea un nuovo repository (es. `job-hunter-bot`)
-3. Carica tutto il progetto:
+3. Carica tutto il progetto (già fatto ✅):
 ```bash
-git init
-git add .
-git commit -m "Primo commit"
-git remote add origin https://github.com/TUO_USER/job-hunter-bot.git
-git push -u origin main
+git remote add origin https://github.com/Andreatp00/job-andrea-carini.git
+git push -u origin master
 ```
+
+🔗 **URL repository**: https://github.com/Andreatp00/job-andrea-carini
 
 ### Passo 2: Aggiungi i Secrets su GitHub
 
@@ -175,7 +174,7 @@ Aggiungi TUTTI questi secrets (uno alla volta):
 
 ### Passo 3: Attiva GitHub Actions
 
-1. Vai sulla tab **Actions** del tuo repository
+1. Vai sulla tab **Actions** del tuo repository: https://github.com/Andreatp00/job-andrea-carini/actions
 2. Clicca su **"I understand my workflows, go ahead and enable them"**
 3. Vedrai il workflow `Job Hunter Bot - Ricerca Giornaliera`
 
