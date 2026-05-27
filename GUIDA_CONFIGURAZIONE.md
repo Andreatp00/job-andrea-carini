@@ -56,25 +56,19 @@ Ti chiederà:
 - **Nome del bot**: scrivi un nome a piacere, ad esempio `Job Hunter Trapani`
 - **Username del bot**: deve finire con `bot`, ad esempio `JobHunterTrapaniBot`
 
-@BotFather ti risponderà con qualcosa del genere:
+@BotFather ti risponderà con un messaggio che contiene il tuo **token** personale.
 
-```
-Done! Congratulations on your new bot. You will find it at t.me/JobHunterTrapaniBot.
-Use this token to access the HTTP API:
-
-```
-
-✅ **Questo è il tuo TELEGRAM_BOT_TOKEN** — è già inserito in config.py!
+✅ **Quello è il tuo TELEGRAM_BOT_TOKEN** — dovrai inserirlo nei Secrets di GitHub!
 
 ### Passo 3: Ottieni il tuo Chat ID
 
 1. Cerca il tuo bot su Telegram (es. `@JobHunterTrapaniBot`)
 2. Avvia il bot con **Avvia** / **Start**
 3. Scrivi un messaggio qualsiasi (es. "ciao")
-4. Poi apri nel browser questo link (cambia TOKEN con quello del tuo bot):
+4. Poi apri nel browser questo link (cambia `IL_TUO_TOKEN` con quello del tuo bot):
 
 ```
-https://api.telegram.org/bot/getUpdates
+https://api.telegram.org/botIL_TUO_TOKEN/getUpdates
 ```
 
 5. Nel risultato cerca `"chat":{"id":` — il numero dopo è il **TELEGRAM_CHAT_ID**
@@ -88,11 +82,11 @@ Esempio di risposta:
 
 ### Passo 4: Inserisci il Chat ID in config.py
 
-Apri `config.py` e modifica:
+Apri `config.py` e verifica che sia vuoto (i token NON vanno scritti qui per sicurezza):
 
 ```python
-TELEGRAM_BOT_TOKEN = ""   # Già inserito
-TELEGRAM_CHAT_ID = "6239270170"   # ← INSERISCI QUI IL TUO CHAT ID
+TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")   # Vuoto di default
+TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")       # Inserisci nei Secrets
 ```
 
 ---
@@ -164,7 +158,7 @@ Aggiungi TUTTI questi secrets (uno alla volta):
 
 | Nome Secret | Valore | Obbligatorio? |
 |---|---|---|
-| `TELEGRAM_BOT_TOKEN` | `` | ✅ SÌ |
+| `TELEGRAM_BOT_TOKEN` | Il token che ti ha dato @BotFather | ✅ SÌ |
 | `TELEGRAM_CHAT_ID` | Il tuo chat ID (es. `6239270170`) | ✅ SÌ |
 | `OPENAI_API_KEY` | La tua chiave Mistral/OpenAI (se ce l'hai) | ❌ No (opzionale) |
 | `EMAIL_SENDER` | La tua email Gmail | ❌ No (opzionale) |
@@ -194,15 +188,13 @@ Per testare SUBITO se funziona:
 
 Se vuoi che il bot usi l'AI per ordinare meglio le offerte, ti serve una chiave API Mistral.
 
-### Passo 1: La chiave è già inserita in config.py
+### Passo 1: Configura la chiave nei Secrets
 
-La chiave API Mistral è già stata inserita direttamente in `config.py`:
+La chiave API Mistral **NON va scritta in config.py** per sicurezza, ma va inserita nei Secrets di GitHub:
 
 ```python
-MISTRAL_API_KEY = os.environ.get("OPENAI_API_KEY", "")
+MISTRAL_API_KEY = os.environ.get("OPENAI_API_KEY", "")   # Vuoto di default, viene dai Secrets
 ```
-
-✅ **La chiave API è già configurata e funzionante!**
 
 ### Passo 2: Ottieni una chiave Mistral (solo se ne vuoi una nuova)
 
@@ -217,7 +209,7 @@ MISTRAL_API_KEY = os.environ.get("OPENAI_API_KEY", "")
 
 1. Vai su **Settings → Secrets and variables → Actions**
 2. Aggiungi:
-   - **OPENAI_API_KEY** = `` (copia questa chiave)
+   - **OPENAI_API_KEY** = La tua chiave Mistral (es. ``)
    - **MISTRAL_MODEL** = `open-mixtral-8x7b` (o `mistral-small-latest`)
 
 ### Passo 4: Test
