@@ -1,0 +1,18 @@
+# Dipendenze Job Hunter Bot — Profilo Back Office / Ragioneria
+# Python 3.10+
+
+# Job scraping
+jobspy>=2.0
+pandas>=2.0
+requests>=2.31
+beautifulsoup4>=4.12
+lxml>=5.0
+
+# Excel export
+openpyxl>=3.1
+
+# AI Ranking (opzionale)
+openai>=1.0
+
+# Email
+# (tutti built-in: smtplib, email)
