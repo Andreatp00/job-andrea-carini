@@ -1,0 +1,8 @@
+seen_jobs.json
+logs/
+data/
+__pycache__/
+*.pyc
+*.log
+.env
+CV.pdf
